@@ -20,7 +20,7 @@ def find_mismatch(text):
 
         if next in ")]}":
             last_open_bracket = opening_brackets_stack.pop()
-            if last_open_bracket is next: continue
+            if are_matching(last_open_bracket, next): continue
 
             return i + 1
 
