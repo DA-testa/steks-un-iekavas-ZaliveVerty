@@ -16,11 +16,13 @@ def find_mismatch(text):
     for i, next in enumerate(text):
         if next in "([{":
             opening_brackets_stack.append(next)
-            last_opening_bracket_index = i
+            last_opening_bracket_index = i + 1
 
         if next in ")]}":
-            last_open_bracket = opening_brackets_stack.pop()
-            if are_matching(last_open_bracket, next): continue
+            last_open_bracket = opening_brackets_stack[-1]
+            if are_matching(last_open_bracket, next):
+                opening_brackets_stack.pop()
+                continue
 
             return i + 1
 
